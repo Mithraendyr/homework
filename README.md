@@ -17,6 +17,13 @@ npm init
 
 ## How to execute the test suite
 
+To run all tests and generate html reports of execution in cypress/reports execute via:
+
+```
+npm test
+```
+
+
 To run all tests headlessly execute:
 
 ```
