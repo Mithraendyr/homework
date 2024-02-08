@@ -1,27 +1,27 @@
 Example testing framework for '' using Cypress with JavaScript.
 
-## Install Cypress project dependancies
+## Install Cypress project dependencies
 
-Install depancies 
+Install dependencies 
 
 With yarn:
-'''
+```
 yarn install
-'''
+```
 
 With npm:
-'''
+```
 npm init
-'''
+```
 
 
-## How to execute test suite
+## How to execute the test suite
 
-To run all tests headlesly execute:
+To run all tests headlessly execute:
 
-'''
+```
 npx cypress run
-'''
+```
 
 npx cypress run --headed --browser chrome
 
@@ -29,11 +29,11 @@ npx cypress run --headed --browser chrome
 
 To open App execute:
 
-'''
+```
 npx cypress open
-'''
+```
 
 1. Select "E2E Testing"
-2. Select browser to execute on
+2. Select a browser to execute on
 3. Select test case to execute
 
