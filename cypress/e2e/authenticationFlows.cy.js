@@ -3,23 +3,14 @@ import SignUpPage from "../pages/signup";
 import MainPage from "../pages/main";
 
 describe('Authentication flows', function() {
-    before(() => {
-        const dateNow = Date.now();
-        Cypress.env('dateNow', dateNow);
-        const testUser = {
-            username: 'test'+Date.now(),
-            email: Date.now()+'t@test.lv',
-            pasword: 'test123'
-        }
-      });
-
-    beforeEach(() => cy.visit(''));
-
+    const dateNow = Date.now();
     const testUser = {
-        username: 'test'+Date.now(),
-        email: Date.now()+'t@test.lv',
+        username: 'test'+dateNow,
+        email: dateNow+'t@test.lv',
         pasword: 'test123'
     }
+
+    beforeEach(() => cy.visit(''));
 
     it('Sign-up new account', function() {
     MainPage.selectSignUp();
