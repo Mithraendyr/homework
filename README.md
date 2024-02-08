@@ -1,19 +1,22 @@
 Example testing framework for '' using Cypress with JavaScript.
 
+## Pre-requistes
+
+Node - https://nodejs.org/en/download/
+
 ## Install Cypress project dependencies
 
 Install dependencies 
+
+With npm:
+```
+npm install
+```
 
 With yarn:
 ```
 yarn install
 ```
-
-With npm:
-```
-npm init
-```
-
 
 ## How to execute the test suite
 
