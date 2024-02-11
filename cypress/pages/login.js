@@ -7,10 +7,6 @@ export default class LoginPage {
     cy.visit('/login');
   }
 
-  static isAt() {
-    cy.url().should('include', '/login');
-  }
-
   static getEmailInput() {
     return cy.get(LoginPage.emailInputLocator).should('be.visible');
   }

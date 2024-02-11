@@ -48,7 +48,7 @@ export default class MainPage {
     cy.get(MainPage.userPictureLocator).should('be.visible');
   }
 
-  static verifyUserIsLoggedIn() {
+  static verifyUserPictureDisplayed() {
     MainPage.hasUserPicture();
   }
 
@@ -85,12 +85,28 @@ export default class MainPage {
     MainPage.getPreviewLinks().first().click();
   }
 
-  static hasDataInEachArticlePreview() {
+  static hasAuthorInPreviewArticle() {
+    MainPage.tagListLocator.should('be.visible');
+  }
+
+  static hasTagListInPreviewArticle() {
+    cy.get('h1').should('be.visible');
+  }
+
+  static hasTextInPreviewArticle() {
+    cy.get('p').should('be.visible');
+  }
+
+  static hasTitleForPreviewArticle() {
+    MainPage.getPreviewArticles().contains(title).should('be.visible');
+  }
+
+  static hasDataInEachPreviewArticle() {
     MainPage.getPreviewArticles().each(() => {
-      cy.get(MainPage.authorLocator).should('be.visible');
-      cy.get(MainPage.tagListLocator).should('be.visible');
-      cy.get('p').should('be.visible');
-      cy.get('h1').should('be.visible');
+      MainPage.hasAuthorInPreviewArticle();
+      MainPage.hasTagListInPreviewArticle();
+      MainPage.hasTitleForPreviewArticle();
+      MainPage.hasTextInPreviewArticle();
     });
   }
 

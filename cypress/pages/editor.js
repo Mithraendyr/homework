@@ -29,11 +29,31 @@ export default class EditorPage {
     return cy.get(EditorPage.publishButtonLocator).should('be.visible');
   }
 
-  static createArticle(title, description, body, tags) {
+  static typeArticleTitle(title) {
     EditorPage.getArticleTitle().type(title);
+  }
+
+  static typeArticleDescription(description) {
     EditorPage.getArticleDescription().type(description);
+  }
+
+  static typeArticleBody(body) {
     EditorPage.getArticleBody().type(body);
+  }
+
+  static typeArticleTags(tags) {
     EditorPage.getArticleTags().type(tags);
+  }
+
+  static clickPublishButton() {
     EditorPage.getPublishButton().click();
+  }
+
+  static createArticle(title, description, body, tags) {
+    EditorPage.typeArticleTitle(title);
+    EditorPage.typeArticleDescription(description);
+    EditorPage.typeArticleBody(body);
+    EditorPage.typeArticleTags(tags);
+    EditorPage.clickPublishButton();
   }
 }

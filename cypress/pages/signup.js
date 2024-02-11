@@ -8,10 +8,6 @@ export default class SignUpPage {
     cy.visit('/register');
   }
 
-  static isAt() {
-    cy.url().should('include', '/register');
-  }
-
   static getUsernameInput() {
     return cy.get(SignUpPage.usernameInputLocator).should('be.visible');
   }

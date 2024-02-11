@@ -5,7 +5,7 @@ import MainPage from "../pages/main";
 describe('Authentication flows', function() {
     beforeEach(() => cy.visit(''));
 
-    it('Sign-up new account', function() {
+    it('Should sing-up new account', function() {
         const dateNow = Date.now();
         const newTestUser = {
             username: 't' + dateNow,
@@ -13,14 +13,13 @@ describe('Authentication flows', function() {
             password: 'test123'
         };
         MainPage.selectSignUp();
-        SignUpPage.isAt();
         SignUpPage.signup(newTestUser.username, newTestUser.email, newTestUser.password);
-        MainPage.verifyUserIsLoggedIn();
+        MainPage.verifyUserPictureDisplayed();
     });
 
-    it('Sign-in existing account', function() {
+    it('Should sign-in with existing account', function() {
         MainPage.selectSignIn();
         LoginPage.login(Cypress.env('TEST_USER_EMAIL'), Cypress.env('TEST_USER_PASSWORD'));
-        MainPage.verifyUserIsLoggedIn();
+        MainPage.verifyUserPictureDisplayed();
     });
 });

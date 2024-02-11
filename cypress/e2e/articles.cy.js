@@ -6,7 +6,7 @@ import EditorPage from "../pages/editor";
 describe('Article flows', function() {
     beforeEach(() => cy.visit(''));
 
-    it('Reading article', function() {
+    it('Should read an article form global feed', function() {
         MainPage.hasGlobalFeedSelected();
         MainPage.hasTenPreviewArticles();
         MainPage.selectFirstArticle();
@@ -21,10 +21,11 @@ describe('Article flows', function() {
         ArticlePage.hasNotAuthCommentSection();
     });
 
-    it('Creating article', function() {
+    it('Should create then edit and delete an article', function() {
+        const dateNow = Date.now();
         const article = {
-            title: 'Test article',
-            description: 'Test article description',
+            title: 'Test article' + dateNow,
+            description: 'Test article description', 
             body: 'Test article body',
             tags: 'test, article'
         };
@@ -32,7 +33,7 @@ describe('Article flows', function() {
         LoginPage.login(Cypress.env('TEST_USER_EMAIL'), Cypress.env('TEST_USER_PASSWORD'));
         MainPage.selectNewArticle();
         EditorPage.createArticle(article.title, article.description, article.body, article.tags);
-        
+
         ArticlePage.hasTitleText(article.title);
         ArticlePage.hasArticleText(article.description);
         ArticlePage.hasArticleText(article.body);
@@ -42,6 +43,12 @@ describe('Article flows', function() {
         ArticlePage.hasEditButton();
         ArticlePage.hasDeleteButton();
         ArticlePage.hasCommentTextArea();
+    
+        ArticlePage.selectEditButton();
+        EditorPage.typeArticleBody(dateNow);
+        EditorPage.clickPublishButton();
+
+        ArticlePage.hasArticleText(article.body+dateNow);
         ArticlePage.selectDeleteButton();
     });
 })
