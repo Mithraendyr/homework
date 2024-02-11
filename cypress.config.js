@@ -1,5 +1,5 @@
-const { defineConfig } = require("cypress");
-
+const defineConfig = require('cypress').defineConfig;
+require('dotenv').config();
 
 module.exports = defineConfig({
   e2e: {
@@ -11,5 +11,9 @@ module.exports = defineConfig({
       json: true,
     },
     baseUrl: "https://demo.realworld.how",
+    setupNodeEvents(on, config) {
+      config.env = process.env;
+      return config;
+    }
   },
 });

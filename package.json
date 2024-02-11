@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "cypress": "^13.6.4",
-    "cypress-mochawesome-reporter": "^3.8.1"
+    "cypress-mochawesome-reporter": "^3.8.1",
+    "dotenv": "^16.4.1"
   },
   "name": "cypress",
   "description": "Example testing framework for '' using Cypress with JavaScript.",

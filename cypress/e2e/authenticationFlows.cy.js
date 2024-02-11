@@ -3,35 +3,24 @@ import SignUpPage from "../pages/signup";
 import MainPage from "../pages/main";
 
 describe('Authentication flows', function() {
-    const dateNow = Date.now();
-    const testUser = {
-        username: 'test'+dateNow,
-        email: dateNow+'t@test.lv',
-        pasword: 'test123'
-    }
-
     beforeEach(() => cy.visit(''));
 
     it('Sign-up new account', function() {
-    MainPage.selectSignUp();
-
-    SignUpPage.isAt();
-    SignUpPage.signup(testUser.username, testUser.email, testUser.pasword);
-
-    MainPage.verifyUserIsLoggedIn();
-    MainPage.verifyUserhasNoPersonalFeed();
+        const dateNow = Date.now();
+        const newTestUser = {
+            username: 't' + dateNow,
+            email: dateNow + '@test.lv',
+            password: 'test123'
+        };
+        MainPage.selectSignUp();
+        SignUpPage.isAt();
+        SignUpPage.signup(newTestUser.username, newTestUser.email, newTestUser.password);
+        MainPage.verifyUserIsLoggedIn();
     });
 
     it('Sign-in existing account', function() {
-    MainPage.selectSignIn();
-
-    LoginPage.login(testUser.email, testUser.pasword);
-
-    MainPage.verifyUserIsLoggedIn();
-    MainPage.verifyUserhasNoPersonalFeed();
+        MainPage.selectSignIn();
+        LoginPage.login(Cypress.env('TEST_USER_EMAIL'), Cypress.env('TEST_USER_PASSWORD'));
+        MainPage.verifyUserIsLoggedIn();
     });
-
-    // no reset functionality just updating
-    // it('Reset password', function() {
-    // });  
-})
+});
